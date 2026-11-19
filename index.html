@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examen de Conciencia · Prepara tu Confesión</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✝️%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--gold:#e6c36a;--gold2:#b8902f;--wine:#7a1730;--cream:#f7efd9;--ink:#2b1a14}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font:20px/1.5 'EB Garamond',Georgia,serif;color:var(--cream);background:radial-gradient(ellipse at 50% 0,#43183a 0,#1a0b27 55%,#0b0614 100%) fixed}
+h1,h2,h3,.cin{font-family:'Cinzel',serif}
+[hidden]{display:none!important}
+.wrap{max-width:820px;margin:0 auto;padding:18px 16px 50px;position:relative;z-index:1}
+svg.i{width:46px;height:46px;fill:currentColor}
+.orn{display:flex;justify-content:center;align-items:center;gap:20px;color:var(--gold);margin:6px 0}
+.orn .sm{width:30px;height:30px;opacity:.75}
+h1{font:700 clamp(28px,6.4vw,48px)/1.15 'Cinzel Decorative','Cinzel',serif;text-align:center;margin:6px 0;color:var(--gold);text-shadow:0 0 20px rgba(230,195,106,.45)}
+.sub{text-align:center;font-style:italic;margin:0 0 14px;opacity:.92}
+.panel{background:linear-gradient(#fbf4de,#f0e4c2);color:var(--ink);border:2px solid var(--gold2);border-radius:18px;padding:24px;box-shadow:0 0 0 6px rgba(230,195,106,.14),0 18px 40px rgba(0,0,0,.5)}
+.hb{width:min(210px,52vw);margin:4px auto 0}
+.heart{display:block;width:100%;animation:beat 2.6s ease-in-out infinite}
+.rays{transform-box:fill-box;transform-origin:center;animation:spin 70s linear infinite}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.3s ease-in-out infinite alternate}
+@keyframes beat{50%{transform:scale(1.045)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes flick{to{transform:scaleY(1.08) scaleX(.94)}}
+.fly{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fly svg{position:absolute;left:-90px;width:70px;height:52px;fill:var(--gold);opacity:.16;animation:drift 38s linear infinite}
+.fly svg:nth-child(2){top:34%;animation-duration:52s;animation-delay:-18s;width:48px}
+.fly svg:nth-child(3){top:68%;animation-duration:44s;animation-delay:-30s}
+.fly svg:nth-child(1){top:12%}
+@keyframes drift{0%{transform:translate(0,0)}25%{transform:translate(28vw,-26px)}50%{transform:translate(58vw,10px)}75%{transform:translate(86vw,-22px)}100%{transform:translate(118vw,0)}}
+.lead{font-style:italic;text-align:center;margin:6px 0 18px}
+.pray{background:rgba(122,23,48,.08);border-left:4px solid var(--wine);padding:10px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-style:italic}
+label.nm{display:block;font:700 15px Cinzel,serif;color:var(--wine);margin:18px 0 6px}
+input.txt{width:100%;font:22px 'EB Garamond',serif;padding:12px 16px;border:2px solid var(--gold2);border-radius:12px;background:#fffdf5;color:var(--ink)}
+.err{color:#a0152e;font-size:.9em;margin:6px 0 0}
+.priv{font-size:.82em;opacity:.8;margin:14px 0 0;text-align:center}
+.btn{font:700 16px Cinzel,serif;padding:13px 26px;border-radius:999px;border:0;cursor:pointer;background:linear-gradient(var(--gold),var(--gold2));color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.btn.ghost{background:transparent;color:var(--wine);border:2px solid var(--wine);box-shadow:none}
+.btn.wine{background:var(--wine);color:#fff}
+.btn:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #2563eb;outline-offset:2px}
+.center{text-align:center;margin-top:20px}
+.bar{height:9px;background:rgba(255,255,255,.16);border-radius:9px;overflow:hidden;margin:6px 0 4px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold2),var(--gold));transition:width .4s}
+.stat{font-size:.85em;text-align:center;opacity:.85;margin:0 0 12px}
+.num{width:54px;height:54px;margin:0 auto 6px;border-radius:50%;border:2px solid var(--gold2);display:grid;place-items:center;font:700 20px Cinzel,serif;color:var(--wine);background:#fffaf0}
+.panel h2{font-size:clamp(19px,4.4vw,26px);text-align:center;margin:0;color:var(--wine);line-height:1.25}
+.ssub{text-align:center;font-style:italic;margin:2px 0 8px;color:#5a3a2e}
+.panel h3{font-size:16px;color:var(--wine);margin:20px 0 0;padding-bottom:5px;border-bottom:2px solid var(--gold2)}
+.q{display:flex;gap:14px;align-items:center;justify-content:space-between;padding:13px 6px;border-bottom:1px dashed rgba(122,23,48,.25);transition:background .2s}
+.q p{margin:0;flex:1}
+.note{display:block;font-size:.84em;color:var(--wine);font-style:italic;margin-top:3px}
+.yn{display:flex;gap:8px}
+.yn button{font:700 15px Cinzel,serif;padding:9px 15px;border-radius:999px;border:2px solid var(--gold2);background:transparent;color:var(--ink);cursor:pointer;min-width:58px}
+.yn .y.on{background:var(--wine);border-color:var(--wine);color:#fff}
+.yn .n.on{background:#2f5d3a;border-color:#2f5d3a;color:#fff}
+.q.si{background:rgba(122,23,48,.09)}
+.q.si p::before{content:'✝ ';color:var(--wine);font-weight:700}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:22px}
+.ri{display:flex;gap:12px;align-items:flex-start;padding:11px 4px;border-bottom:1px dashed rgba(122,23,48,.25)}
+.ri p{margin:0;flex:1}
+.box{width:20px;height:20px;border:2px solid var(--wine);border-radius:4px;flex:none;margin-top:5px}
+.ri label{font-size:.78em;color:#5a3a2e;text-align:right;flex:none}
+.ri input{display:block;width:74px;margin-left:auto;padding:5px 8px;border:1.5px solid var(--gold2);border-radius:8px;font:17px 'EB Garamond',serif;background:#fffdf5}
+.keys{margin-top:22px;background:rgba(184,144,47,.14);border-radius:12px;padding:6px 18px 10px}
+.keys li{margin:7px 0}
+.rs{margin-top:22px}
+.verse{text-align:center;font-style:italic;max-width:620px;margin:22px auto 6px;color:var(--cream)}
+.verse b{font:500 13px Cinzel,serif;color:var(--gold);font-style:normal}
+@media(max-width:560px){body{font-size:18px}.q{flex-direction:column;align-items:stretch}.yn{justify-content:flex-end}.ri{flex-wrap:wrap}.ri label{width:100%;text-align:left}.ri input{margin-left:0}.panel{padding:18px 14px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{body{background:#fff;color:#000}.fly,.orn,.verse,.btn,.nav,.center{display:none!important}.panel{box-shadow:none;border:0;background:#fff}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M17 0h6v16h14v6H23v38h-6V22H3v-6h14z"/></symbol>
+ <symbol id="dove" viewBox="0 0 64 48"><path d="M6 31C12 25 21 24 28 27 30 18 38 10 51 7 47 13 45 18 45 22 53 20 59 22 63 26 55 28 51 31 47 35 43 41 34 43 26 41 19 39 11 37 6 31Z"/><path d="M27 27C24 15 30 6 41 1 38 9 38 16 41 23Z" opacity=".7"/></symbol>
+ <symbol id="chalice" viewBox="0 0 40 64"><circle cx="20" cy="9" r="8" fill="#fff8e6" stroke="currentColor" stroke-width="2"/><path d="M18 3h4v4h4v4h-4v4h-4v-4h-4V7h4z"/><path d="M5 22h30c0 17-6 25-15 25S5 39 5 22Z"/><rect x="17" y="46" width="6" height="10"/><path d="M9 62c0-6 5-8 11-8s11 2 11 8Z"/></symbol>
+</svg>
+
+<div class="fly" aria-hidden="true"><svg><use href="#dove"/></svg><svg><use href="#dove"/></svg><svg><use href="#dove"/></svg></div>
+
+<div class="wrap">
+<header>
+ <div class="orn"><svg class="i sm"><use href="#dove"/></svg><svg class="i"><use href="#cross"/></svg><svg class="i"><use href="#chalice"/></svg><svg class="i"><use href="#cross"/></svg><svg class="i sm" style="transform:scaleX(-1)"><use href="#dove"/></svg></div>
+ <h1>Examen de Conciencia</h1>
+ <p class="sub">Prepara tu corazón para encontrarte con la misericordia de Cristo</p>
+</header>
+
+<main>
+<section id="start" class="panel">
+ <div class="hb"></div>
+ <p class="lead">«Jesús, en Ti confío»</p>
+ <p>Este examen mira la realidad de frente, sin suavizar las cosas, con claridad moral católica y con esperanza en la gracia de Dios. Responde <b>Sí</b> o <b>No</b> con sinceridad; al final tendrás la lista de lo que debes confesar, y podrás descargarla en PDF.</p>
+ <p class="pray">Ven, Espíritu Santo, ilumina mi mente para ver mis pecados y mueve mi corazón al arrepentimiento. Amén.</p>
+ <label class="nm" for="name">Tu nombre</label>
+ <input id="name" class="txt" type="text" maxlength="60" autocomplete="given-name" placeholder="Escribe tu nombre">
+ <p class="err" id="err" hidden>Escribe tu nombre para comenzar.</p>
+ <div class="center"><button class="btn" id="go">Comenzar mi examen</button></div>
+ <p class="priv">Tus respuestas no se envían ni se guardan en ningún lugar: todo ocurre en tu dispositivo y desaparece al cerrar la página.</p>
+</section>
+
+<section id="quiz" hidden>
+ <div class="bar"><i id="pb"></i></div>
+ <p class="stat" id="st"></p>
+ <div class="panel"><div id="card"></div>
+  <div class="nav"><button class="btn ghost" id="back">Anterior</button><button class="btn" id="next">Siguiente</button></div>
+ </div>
+</section>
+
+<section id="result" hidden>
+ <div class="panel">
+  <div class="hb"></div>
+  <h2 id="rt"></h2>
+  <p class="ssub" id="rsub"></p>
+  <div id="list"></div>
+  <div class="pray"><b>Acto de contrición.</b> Dios mío, me arrepiento de todo corazón de todos mis pecados, porque al pecar te ofendo a Ti, que eres infinitamente bueno y digno de ser amado sobre todas las cosas. Propongo firmemente, con tu gracia, no volver a pecar y evitar las ocasiones de pecado. Amén.</div>
+  <div class="keys"><h3 style="border:0">Claves prácticas para la confesión</h3><ul>
+   <li><b>Nada escandaliza al sacerdote.</b> Escucha de todo cada día; su único objetivo es darte el perdón de Cristo.</li>
+   <li><b>Sé concreto sin entrar en morbo.</b> En los pecados graves basta decir qué hiciste y cuántas veces (aproximadamente), sin detalles gráficos.</li>
+   <li><b>Si hay pecados reservados o dudas graves,</b> dilo con sencillez: hoy todos los sacerdotes pueden absolver y acompañarte con misericordia.</li></ul></div>
+  <div class="center"><button class="btn wine" id="pdf">Descargar mi lista en PDF</button></div>
+  <div class="center" style="margin-top:12px"><button class="btn ghost" id="rev">Revisar respuestas</button> <button class="btn ghost" id="again">Empezar de nuevo</button></div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <p class="verse">«Si confesamos nuestros pecados, Dios, que es fiel y justo, nos los perdonará.»<br><b>1 Juan 1,9</b></p>
+ <div class="orn"><svg class="i sm"><use href="#dove"/></svg><svg class="i"><use href="#chalice"/></svg><svg class="i"><use href="#cross"/></svg><svg class="i"><use href="#chalice"/></svg><svg class="i sm" style="transform:scaleX(-1)"><use href="#dove"/></svg></div>
+ <p class="verse" style="margin-top:6px">«Vengan a mí los que están cansados y agobiados, y yo los aliviaré.»<br><b>Mateo 11,28</b></p>
+</footer>
+</div>
+
+<script>
+const R=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+const S=[
+{t:'Amarás a Dios sobre todas las cosas',s:'Idolatría, ocultismo y coherencia',g:[[null,[
+'¿He convertido el placer, la aprobación en redes, el dinero, una relación, una ideología o mi propio ego en mi verdadero dios?',
+'¿He caído en ateísmo práctico (vivir como si Dios no existiera, tomando decisiones graves sin consultarle nunca)?',
+'¿He participado en sesiones de espiritismo, ouija, lectura de cartas/tarot, amarres, limpias esotéricas, brujería, santería o cultos ocultistas por curiosidad, despecho o desesperación?',
+'¿He consumido contenido que promueve el ocultismo, el satanismo o la burla explícita hacia Cristo y los sacramentos?',
+'¿He hecho comuniones sacrílegas (recibir la Eucaristía sabiendo que tengo pecado mortal sin haberme confesado antes)?',
+'¿He ocultado deliberadamente pecados graves en confesiones anteriores por vergüenza o miedo al qué dirá el sacerdote, invalidando la confesión?',
+'¿He recibido la Confirmación o actuado como padrino/testigo estando en pecado grave y sin intención real de vivir la fe?',
+'¿He dejado de rezar durante semanas o meses, acordándome de Dios solo cuando necesito algo?',
+'¿He dudado voluntariamente de la fe o negado alguna verdad que enseña la Iglesia?',
+'¿He creído en horóscopos, reiki, energías, amuletos o supersticiones, esperando de ellos lo que solo Dios puede dar?',
+'¿Me he avergonzado de mi fe o la he negado delante de amigos o compañeros por miedo a las burlas?',
+'¿Llevo más de un año sin confesarme o he dejado de comulgar por abandono, sin motivo grave?',
+'¿He dejado de cumplir la penitencia que me dio el sacerdote en mi última confesión?',
+'¿He dudado de la misericordia de Dios, pensando que mis pecados son demasiado grandes para ser perdonados?']]]},
+
+{t:'No tomarás el nombre de Dios en vano',s:'Blasfemia y sacrilegio',g:[[null,[
+'¿He usado el nombre de Dios, de Jesucristo o de la Virgen María como insulto, maldición o expresión vulgar en momentos de rabia o burla?',
+'¿He maldecido a otras personas, deseándoles la muerte, una desgracia grave o la condenación?',
+'¿He jurado por Dios sabiendo que estaba mintiendo (perjurio) para encubrir algo grave?',
+'¿He tratado con irreverencia objetos benditos, imágenes sagradas, templos o la Eucaristía?',
+'¿He hecho chistes o burlas sobre Dios, los santos, los sacerdotes o las cosas sagradas?',
+'¿He compartido o aplaudido en redes contenido que se burla de la fe?',
+'¿He dejado de cumplir una promesa que le hice a Dios?']]]},
+
+{t:'Santificarás las fiestas',s:'El domingo y los deberes graves',g:[[null,[
+'¿He faltado voluntariamente a la Misa dominical o de precepto sin estar enfermo ni tener un impedimento real y grave?',
+'¿He priorizado fiestas, resacas, viajes, partidos, videojuegos o pereza por encima del deber grave de asistir a Misa el domingo?',
+'¿He trabajado o hecho trabajar a otros en domingo sin verdadera necesidad, impidiendo el descanso y el culto a Dios?',
+'¿He llegado tarde a Misa por descuido o me he ido antes de que terminara sin motivo?',
+'¿He estado en Misa distraído a propósito con el celular o conversando, sin intención de rezar?',
+'¿He comulgado sin respetar el ayuno de una hora antes de la Comunión, sin causa justificada?',
+'¿He pasado el domingo entero en pantallas, fiestas o trabajo sin dedicar tiempo a Dios ni a la familia?']]]},
+
+{t:'Honrarás a tu padre y a tu madre',s:'Autoridad, familia y manipulación',g:[[null,[
+'¿He insultado gravemente, humillado, despreciado o levantado la mano contra mis padres o familiares?',
+'¿He manipulado emocionalmente a mis padres, les he mentido sobre dónde estoy, con quién ando o en qué gasto su dinero?',
+'¿Me aprovecho económicamente del esfuerzo de mi familia mientras desperdicio mis estudios o mi tiempo en vicios y ocio?',
+'¿He desobedecido a mis padres en asuntos graves relacionados con mi seguridad física, moral o espiritual?',
+'¿Fomento el odio, la división o el rencor dentro de mi propia casa?',
+'¿He descuidado o tratado con impaciencia a mis padres o abuelos cuando necesitaban de mí?',
+'¿He faltado al respeto a profesores, jefes o autoridades legítimas?',
+'¿He dado mal ejemplo a mis hermanos menores o a niños a mi cargo?',
+'Si tengo hijos o personas a mi cargo: ¿he descuidado su educación, su seguridad o su fe?']]]},
+
+{t:'No matarás',s:'Vida, drogas, alcohol, violencia y autodestrucción',g:[
+['Aborto y defensa de la vida',[
+'¿He abortado, pagado un aborto, presionado a mi pareja o a una amiga para que aborte, o facilitado pastillas/contactos abortivos?|El aborto procurado conlleva consecuencias espirituales muy graves que requieren confesión sincera.',
+'¿He promovido, justificado o militado a favor del aborto, la eutanasia o el desprecio por la vida humana?']],
+['Drogas, alcohol y adicciones',[
+'¿He consumido drogas ilícitas (marihuana, cocaína, éxtasis, LSD, cristal, inhalantes, etc.) o abusado de fármacos/ansiolíticos para drogarme?',
+'¿He vendido, regalado, distribuido o inducido a otros amigos o menores a consumir drogas o alcohol?',
+'¿Me he emborrachado hasta perder el uso de la razón, el autocontrol o la memoria (blackouts)?',
+'¿He conducido un vehículo (auto o moto) bajo los efectos del alcohol o drogas, poniendo en riesgo mortal mi vida y la de inocentes?']],
+['Violencia y salud mental',[
+'¿He participado en peleas callejeras, golpizas, linchamientos, riñas o agresiones físicas graves?',
+'¿He portado armas o buscado venganza física contra alguien?',
+'¿Me he autolesionado (cortes, quemaduras, golpes) o he atentado contra mi vida?|Si hoy cargas con esto, habla con alguien de confianza o con un sacerdote cuanto antes: no tienes que llevarlo solo.',
+'¿He alimentado ideas suicidas sin buscar ayuda profesional y espiritual?',
+'¿He caído en trastornos alimenticios autoinducidos de forma voluntaria (bulimia, anorexia) destruyendo mi cuerpo?',
+'¿He incitado o animado a alguien a hacerse daño o quitarse la vida, aunque sea “en broma” por internet?',
+'¿He guardado rencor u odio, o me he negado a perdonar a alguien?',
+'¿He maltratado, gritado o humillado a mi pareja, hermanos, hijos u otras personas?',
+'¿He dado mal ejemplo o escándalo que haya hecho caer a otros en el pecado?',
+'¿He puesto en riesgo grave mi salud o la de otros por imprudencia (velocidad extrema, retos peligrosos, descuido de enfermedades)?']]]},
+
+{t:'No cometerás actos impuros',s:'Sexualidad, pornografía, infidelidad y abuso',g:[
+['Castidad y relaciones sexuales',[
+'¿He tenido relaciones sexuales fuera del matrimonio (fornicación), ya sea en un noviazgo o en encuentros casuales (one-night stands, amigos con derechos)?',
+'¿He mantenido relaciones sexuales con alguien casado (adulterio)?',
+'¿He practicado actos homosexuales o cualquier acto sexual fuera del orden natural abierto a la vida y al matrimonio?',
+'¿He usado anticonceptivos (preservativos, pastillas, implantes, pastilla del día después —que además puede tener efecto abortivo—) para tener relaciones fuera del matrimonio?',
+'¿He participado en tríos, orgías, intercambio de parejas o prostitución (pagando o cobrando)?']],
+['Masturbación y pornografía',[
+'¿Me he masturbado (actos impuros en solitario), cediendo al impulso o buscando escape emocional?',
+'¿Consumo pornografía de manera habitual o esporádica (videos, relatos eróticos, hentai, OnlyFans, webcams, contenido explícito en redes)?',
+'¿He pagado por contenido sexual o interactuado directamente con creadores de contenido para adultos?']],
+['Consentimiento, abuso y entorno digital',[
+'¿He presionado, manipulado, chantajeado o emborrachado a alguien para obtener favores sexuales o relaciones?',
+'¿He tocado o me he aprovechado de alguien sin su pleno consentimiento o estando inconsciente/ebrio?',
+'¿He grabado, tomado fotos íntimas o difundido nudes de otra persona sin su permiso (violencia digital)?',
+'¿Practico el sexting, envío fotos íntimas mías o pido fotos íntimas a otros?',
+'¿He sido infiel a mi pareja (física o virtualmente, coqueteando o manteniendo chats íntimos con terceros)?',
+'¿En mi noviazgo, convierto la relación en un espacio de lujuria (caricias íntimas, tocamientos, juegos previos) en lugar de cuidar la pureza y el respeto mutuo?',
+'¿He hablado o bromeado con obscenidad, o escuchado chistes impuros disfrutándolos?',
+'¿Me he puesto voluntariamente en ocasión próxima de pecado (fiestas, lugares, estar a solas con alguien) sabiendo que probablemente caería?',
+'¿He visto o escuchado contenido sexual en series, videojuegos, canciones o chats, buscándolo a propósito?']]]},
+
+{t:'No robarás',s:'Fraude, extorsión, corrupción y justicia',g:[[null,[
+'¿He robado dinero, objetos de valor, celulares o bienes en casas, tiendas, trabajos o a mis propios amigos y familiares?',
+'¿He participado en asaltos, estafas, clonación de tarjetas, fraudes digitales o phishing?',
+'¿He comprado o vendido objetos sabiendo que eran robados?',
+'¿He sobornado o aceptado sobornos para pasar materias, evitar multas o conseguir favores?',
+'¿He falsificado documentos, firmas, certificados médicos o notas académicas?',
+'¿He extorsionado o chantajeado a alguien por dinero o favores?',
+'¿He apostado de forma compulsiva (casinos, apuestas deportivas online) perdiendo dinero necesario o endeudándome?',
+'¿He destruido intencionalmente propiedad ajena (vandalismo grave) sin reparar el daño?',
+'¿Me he quedado con algo que encontré o que me prestaron, sin devolverlo?',
+'¿He dejado de pagar deudas, alquileres o sueldos justos pudiendo hacerlo?',
+'¿He aprovechado un error ajeno (cambio de más, cobros equivocados) para quedarme con lo que no era mío?',
+'¿He pirateado música, películas o programas, o presentado trabajos ajenos como míos (plagio)?',
+'¿He cobrado por un trabajo que no hice de verdad, perdiendo el tiempo en horas de estudio o de empleo?',
+'¿He sido avaro, negándome a ayudar al necesitado cuando podía hacerlo?']]]},
+
+{t:'No levantarás falso testimonio ni mentirás',s:'Difamación, manipulación y engaño',g:[[null,[
+'¿He destruido la reputación de alguien inventando mentiras graves sobre su vida sexual, su honradez o su persona (calumnia)?',
+'¿He hecho acusaciones falsas ante autoridades, profesores, padres o en redes sociales (funas injustas)?',
+'¿He revelado secretos gravísimos que destruyeron amistades, familias o la estabilidad emocional de alguien?',
+'¿Llevo una doble vida calculada, engañando sistemáticamente a mis padres, a mi pareja y a mis amigos?',
+'¿He manipulado psicológicamente a alguien (gaslighting, chantaje emocional) para controlarlo o hacerle sentir culpable de mis propios errores?',
+'¿He usado las redes sociales para acosar, humillar públicamente o destruir la autoestima de otra persona (ciberbullying)?',
+'¿He mentido para salir de un problema, evitar un castigo o quedar bien?',
+'¿He copiado en exámenes o presentado trabajos ajenos como propios?',
+'¿He criticado o chismeado, hablando mal de alguien a sus espaldas, aunque lo dicho fuera verdad?',
+'¿He juzgado mal a alguien sin pruebas, pensando lo peor de él o de ella?',
+'¿He roto un secreto que me confiaron?',
+'¿He compartido noticias, rumores o mensajes que sabía que eran falsos?']]]},
+
+{t:'No consentirás pensamientos ni deseos impuros',s:'Lujuria interior y mirada',g:[[null,[
+'¿Alimento voluntariamente fantasías sexuales con personas conocidas, amigos, parejas de otros o desconocidos?',
+'¿Uso las redes sociales (Instagram, TikTok, X, Telegram) como un catálogo para buscar estímulos sexuales y alimentar la lujuria?',
+'¿Miro a los hombres o a las mujeres como simples objetos de consumo sexual, despojándolos de su dignidad como personas?',
+'¿Me expongo deliberadamente a películas, series, música o ambientes que sé perfectamente que disparan mi deseo impuro y me llevan a caer?',
+'¿Me he detenido voluntariamente en un pensamiento o recuerdo impuro en lugar de rechazarlo de inmediato?',
+'¿He buscado con la mirada, en la calle o en pantallas, a personas para desearlas impuramente?']]]},
+
+{t:'No codiciarás los bienes ajenos',s:'Envidia destructiva y ambición sin escrúpulos',g:[[null,[
+'¿Siento un resentimiento profundo o deseo que le vaya mal a alguien que tiene éxito, dinero, atractivo físico, pareja o talentos que yo no tengo?',
+'¿Estaría dispuesto a pisar, traicionar o perjudicar a un amigo o compañero para quedarme con lo que tiene (su pareja, su puesto, su dinero o su reconocimiento)?',
+'¿Vivo esclavo de la envidia y el materialismo, despreciando a quienes tienen menos que yo y humillándolos por su condición económica o social?',
+'¿Me entristece el bien de los demás o me alegro de sus fracasos?',
+'¿Me he dejado dominar por el afán de tener más (ropa, tecnología, dinero) sin pensar en los pobres?',
+'¿He sido ingrato, quejándome siempre de lo que tengo y sin agradecer a Dios ni a los demás?']]]}
+];
+
+const HEART=`<svg class="heart" viewBox="0 0 200 240" role="img" aria-label="Sagrado Corazón de Jesús"><defs><radialGradient id="hg" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#ff6b5e"/><stop offset=".6" stop-color="#c4182f"/><stop offset="1" stop-color="#7a0f22"/></radialGradient><radialGradient id="hl"><stop offset="0" stop-color="#ffe79a" stop-opacity=".85"/><stop offset="1" stop-color="#ffe79a" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="125" r="112" fill="url(#hl)"/><circle class="rays" cx="100" cy="125" r="102" fill="none" stroke="#b8902f" stroke-width="18" stroke-dasharray="2 14" opacity=".75"/><path d="M100 212C40 165 28 112 58 90C80 76 98 90 100 106C102 90 120 76 142 90C172 112 160 165 100 212Z" fill="url(#hg)" stroke="#5a0a18" stroke-width="2"/><path class="flame" d="M100 104C82 86 94 76 100 62C106 76 118 86 100 104Z" fill="#ffcf4d"/><path d="M97 22h6v12h11v6h-11v28h-6V40H86v-6h11z" fill="#f7efd9" stroke="#b8902f" stroke-width="1"/><ellipse cx="100" cy="150" rx="58" ry="14" fill="none" stroke="#6b4a1e" stroke-width="4" stroke-dasharray="6 3" transform="rotate(-8 100 150)"/></svg>`;
+document.querySelectorAll('.hb').forEach(e=>e.innerHTML=HEART);
+
+const $=id=>document.getElementById(id),Q=s=>s.split('|');
+const TOT=S.reduce((a,s)=>a+s.g.reduce((b,g)=>b+g[1].length,0),0);
+let name='',step=0,A={},C={};
+function show(id){['start','quiz','result'].forEach(x=>$(x).hidden=x!==id);scrollTo(0,0)}
+function upd(){
+ const n=Object.keys(A).length;
+ $('pb').style.width=(n/TOT*100)+'%';
+ $('st').textContent='Mandamiento '+(step+1)+' de 10 · '+n+' de '+TOT+' preguntas respondidas';
+ $('back').style.visibility=step?'visible':'hidden';
+ $('next').textContent=step==9?'Ver mi lista':'Siguiente';
+}
+function render(){
+ const s=S[step];
+ let h='<div class="num">'+R[step]+'</div><h2>'+s.t+'</h2><p class="ssub">'+s.s+'</p>';
+ s.g.forEach((g,gi)=>{
+  if(g[0])h+='<h3>'+g[0]+'</h3>';
+  g[1].forEach((q,qi)=>{
+   const k=step+'.'+gi+'.'+qi,[t,n]=Q(q),v=A[k];
+   h+='<div class="q '+(v===true?'si':'')+'" data-k="'+k+'"><p>'+t+(n?'<span class="note">'+n+'</span>':'')+'</p><div class="yn"><button class="y '+(v===true?'on':'')+'" data-v="1" aria-pressed="'+(v===true)+'">Sí</button><button class="n '+(v===false?'on':'')+'" data-v="0" aria-pressed="'+(v===false)+'">No</button></div></div>';
+  });
+ });
+ $('card').innerHTML=h;upd();
+}
+$('card').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ const row=b.closest('.q'),k=row.dataset.k,v=b.dataset.v==='1';
+ if(A[k]===v)delete A[k];else A[k]=v;
+ row.classList.toggle('si',A[k]===true);
+ row.querySelector('.y').classList.toggle('on',A[k]===true);
+ row.querySelector('.n').classList.toggle('on',A[k]===false);
+ row.querySelector('.y').setAttribute('aria-pressed',A[k]===true);
+ row.querySelector('.n').setAttribute('aria-pressed',A[k]===false);
+ upd();
+});
+$('go').onclick=()=>{
+ name=$('name').value.trim();
+ if(!name){$('err').hidden=false;$('name').focus();return}
+ $('err').hidden=true;step=0;show('quiz');render();
+};
+$('name').addEventListener('keydown',e=>{if(e.key==='Enter')$('go').click()});
+$('back').onclick=()=>{if(step>0){step--;render();scrollTo(0,0)}};
+$('next').onclick=()=>{if(step<9){step++;render();scrollTo(0,0)}else result()};
+$('rev').onclick=()=>{step=0;show('quiz');render()};
+$('again').onclick=()=>{if(confirm('Se borrarán tus respuestas. ¿Empezar de nuevo?')){A={};C={};$('name').value='';show('start')}};
+
+function items(){
+ const out=[];
+ S.forEach((s,si)=>{const it=[];
+  s.g.forEach((g,gi)=>g[1].forEach((q,qi)=>{const k=si+'.'+gi+'.'+qi;if(A[k]===true)it.push([k,Q(q)[0]])}));
+  if(it.length)out.push([si,it]);
+ });
+ return out;
+}
+function result(){
+ const all=items(),n=all.reduce((a,x)=>a+x[1].length,0);
+ $('rt').textContent='Lista de '+name+' para la confesión';
+ $('rsub').textContent=n?('Marcaste '+n+(n==1?' punto':' puntos')+'. Anota cuántas veces, aproximadamente, si lo recuerdas.'):'No marcaste ningún punto.';
+ let h='';
+ all.forEach(([si,it])=>{
+  h+='<h3 class="rs">'+R[si]+'. '+S[si].t+'</h3>';
+  it.forEach(([k,t])=>{h+='<div class="ri"><span class="box"></span><p>'+t+'</p><label>¿Cuántas veces?<input data-k="'+k+'" inputmode="numeric" maxlength="4" value="'+(C[k]||'')+'"></label></div>'});
+ });
+ if(!n)h='<p class="lead">Si respondiste con total sinceridad, da gracias a Dios. Si dudas, vuelve a revisar: la confesión empieza con la verdad.</p>';
+ $('list').innerHTML=h;show('result');
+}
+$('list').addEventListener('input',e=>{if(e.target.dataset.k)C[e.target.dataset.k]=e.target.value.trim()});
+
+$('pdf').onclick=()=>{
+ if(!window.jspdf){alert('No se pudo cargar el generador de PDF. Se abrirá la impresión: elige «Guardar como PDF».');print();return}
+ const d=new jspdf.jsPDF({unit:'mm',format:'a4'}),W=210,M=18,wine=[122,23,48],gold=[184,144,47],GL=[230,195,106];
+ let y;
+ const cross=(x,yy,h,c)=>{d.setFillColor(...c);d.rect(x-h*.07,yy,h*.14,h,'F');d.rect(x-h*.28,yy+h*.27,h*.56,h*.13,'F')};
+ const band=f=>{
+  d.setFillColor(...wine);d.rect(0,0,W,f?44:16,'F');d.setFillColor(...gold);d.rect(0,f?44:16,W,1.2,'F');
+  if(f){cross(W/2,6,17,GL);d.setTextColor(247,239,217);d.setFont('times','bold');d.setFontSize(23);d.text('EXAMEN DE CONCIENCIA',W/2,31,{align:'center'});d.setFont('times','italic');d.setFontSize(11);d.text('Preparación para el Sacramento de la Reconciliación',W/2,38,{align:'center'})}
+  else{d.setTextColor(...GL);d.setFont('times','bold');d.setFontSize(11);d.text('EXAMEN DE CONCIENCIA  -  '+name.toUpperCase(),W/2,10,{align:'center'})}
+ };
+ const np=()=>{d.addPage();band(false);y=30};
+ const need=h=>{if(y+h>280)np()};
+ const ink=()=>{d.setTextColor(43,26,20);d.setFont('times','normal');d.setFontSize(11.5)};
+ band(true);y=58;ink();
+ d.setFont('times','bold');d.setFontSize(13);d.text('Nombre: '+name,M,y);
+ d.text('Fecha: '+new Date().toLocaleDateString('es-BO',{day:'numeric',month:'long',year:'numeric'}),W-M,y,{align:'right'});y+=8;
+ d.setFont('times','italic');d.setFontSize(11);
+ const intro=d.splitTextToSize('Esta es la lista de lo que debo confesar. En la confesión basta decir qué hice y cuántas veces (aproximadamente), con sencillez y sin detalles innecesarios.',W-2*M);
+ d.text(intro,M,y);y+=intro.length*5+5;
+ const all=items();
+ if(!all.length){ink();d.text('No marqué ningún punto en este examen.',M,y);y+=10}
+ all.forEach(([si,it])=>{
+  need(24);d.setFont('times','bold');d.setFontSize(13);d.setTextColor(...wine);
+  d.text(R[si]+'. '+S[si].t,M,y);y+=2;d.setDrawColor(...gold);d.setLineWidth(.6);d.line(M,y,W-M,y);y+=6.5;
+  it.forEach(([k,t])=>{
+   ink();
+   const lines=d.splitTextToSize(t+(C[k]?'  -  veces: '+C[k]:''),W-2*M-9);
+   need(lines.length*5.2+3);
+   d.setDrawColor(...wine);d.setLineWidth(.4);d.rect(M,y-3.4,3.8,3.8);
+   d.text(lines,M+8,y);y+=lines.length*5.2+2.6;
+  });
+  y+=3;
+ });
+ need(70);y+=4;
+ d.setFillColor(251,244,222);d.setDrawColor(...gold);d.setLineWidth(.6);d.roundedRect(M,y,W-2*M,62,3,3,'FD');
+ let by=y+8;d.setFont('times','bold');d.setFontSize(12);d.setTextColor(...wine);d.text('Acto de contrición',M+5,by);by+=6;
+ ink();d.setFontSize(10.5);d.setFont('times','italic');
+ const ac=d.splitTextToSize('Dios mío, me arrepiento de todo corazón de todos mis pecados, porque al pecar te ofendo a Ti, que eres infinitamente bueno y digno de ser amado sobre todas las cosas. Propongo firmemente, con tu gracia, no volver a pecar y evitar las ocasiones de pecado. Amén.',W-2*M-10);
+ d.text(ac,M+5,by);by+=ac.length*4.6+3;
+ d.setFont('times','normal');d.setFontSize(10);
+ const ks=d.splitTextToSize('Recuerda: nada escandaliza al sacerdote, que está para darte el perdón de Cristo. Sé concreto sin entrar en morbo y, si hay una duda grave o un pecado delicado, dilo con sencillez.',W-2*M-10);
+ d.text(ks,M+5,by);
+ const N=d.getNumberOfPages();
+ for(let i=1;i<=N;i++){d.setPage(i);d.setFont('times','italic');d.setFontSize(9);d.setTextColor(120,100,90);d.text('Jesús, en Ti confío   |   Página '+i+' de '+N,W/2,290,{align:'center'})}
+ d.save('Examen-de-conciencia-'+(name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-')||'lista')+'.pdf');
+};
+</script>
+</body>
+</html>
